@@ -1,0 +1,24 @@
+.truncate1 {
+  display: block;
+  width: inherit;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.truncate1 + a {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: -1px;
+}
+.truncate {
+  display: inline-block;
+  width: inherit;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.truncate + a {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: -1px;
+}

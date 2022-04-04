@@ -1,0 +1,67 @@
+.dash {
+  border: 0 none;
+  border-top: 2px dashed #000000;
+  background: none;
+  height: 0;
+  width: 50px;
+  padding: 0;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  margin-left: 0px;
+}
+
+.bullets {
+  list-style: none; /* Remove default bullets */
+}
+
+.bullets li::before {
+  content: "\2022"; /* Add content: \2022 is the CSS Code/unicode for a bullet */
+  color: rgb(0, 0, 0); /* Change the color */
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+  width: 1em; /* Also needed for space (tweak if needed) */
+  /* Also needed for space (tweak if needed) */
+}
+
+@media screen and (max-width: 705px) {
+  .size {
+    object-fit: cover;
+    overflow: auto;
+
+    max-height: 150px;
+    min-height: 150px;
+  }
+}
+@media screen and (min-width: 705px) {
+  .size {
+    
+    height: 150px;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    overflow: auto;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .marginMain {
+    margin: 0px;
+  }
+}
+@media screen and (min-width: 440px) {
+  .marginMain {
+    margin: 45px;
+  }
+}
+@media screen and (max-width: 440px) {
+  .widthForrow {
+    min-width: 355.7px;
+    min-height: 150px;
+  }
+}
+@media screen and (min-width: 440px) {
+  .widthForrow {
+    min-width: 637.7px;
+    min-height: 150px;
+  }
+}

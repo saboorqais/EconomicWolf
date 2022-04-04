@@ -1,0 +1,13 @@
+@media screen and (max-width: 1000px) {
+    .Padding-for-pics{
+    margin-top: 30px;
+
+    }}
+@media screen and (max-width: 800px) {
+        #f1{
+        margin-left: -30px;
+        margin-right: -30px;
+    
+        }}
+      
+

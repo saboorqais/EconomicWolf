@@ -1,0 +1,137 @@
+@media screen and (min-width:468px){
+    .helperformargin{
+
+    }  
+}
+
+.selection1{
+background-color: white;
+color: unset;
+
+}
+
+.box{
+  margin-top: 5px;
+  border-style: solid;
+  border-color: white;
+  border-width: 2px;
+  color: unset;
+  width: fit-content;
+  text-align: center;
+
+  
+}
+.helper{
+    margin: 10px;
+    
+}
+.addon{
+  padding: 10px;
+  font-weight: bold;
+}
+
+.visibilityClassForButton{
+    visibility: hidden;
+    display: none;
+    
+}
+.visibilityClassForList{
+    visibility: visible;
+}
+@media screen and (max-width:1150px) {
+    .visibilityClassForButton{
+        visibility: visible;
+        display:inherit;
+        
+    }
+    .visibilityClassForList{
+        visibility: hidden;
+        display: none;
+    }
+}
+.arrow-down-main {
+    width: 0; 
+    height: 0; 
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    display: inline-block;
+    border-top: 18px solid #f00;
+    margin-right:6px ;
+  }
+  .arrow-down {
+    width: 0; 
+    height: 0; 
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    display: inline-block;
+    border-top: 12px solid ;
+    margin-right:6px ;
+  }
+  .arrow-up {
+    width: 0; 
+    height: 0; 
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    display: inline-block;
+    border-bottom: 12px solid ;
+    margin-right:6px ;
+  }
+.selection {
+    display: inline-block;
+    position: relative;
+    
+  }
+  
+  .selection:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #ffffff;
+    transform-origin: bottom right;
+    transition: transform ;
+    transform: scaleX(1);
+    
+  }
+
+  
+.listhover:hover{
+background-color: white;
+color: black;
+}
+
+  
+  .navbarIndicator a {
+
+    padding: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+    left: 0;
+    width: 12%; /* Four links of equal widths */
+    text-align: left;
+  }
+  
+
+.r{
+  display: flex;
+  flex-wrap: wrap;;
+}
+  
+.serv ul {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+
+}
+
+.serv ul li {
+  list-style: none;
+  flex: 0 0 7.333333%;
+  min-width: 120px;
+}
+
+  

@@ -1,0 +1,70 @@
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
+.demo{ background-color: black; }
+.pagination-outer{ text-align: center; }
+.pagination{
+    background-color: #fff;
+    font-family: 'Kodchasan', sans-serif;
+    border-radius: 40px;
+    display: inline-flex;
+    overflow: hidden;
+    position: relative;
+}
+.pagination li a.page-link{
+    color: #505050;
+    background-color: transparent;
+    font-size: 25px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border:none;
+    border-right: 1px solid rgba(0,0,0,0.05);
+    border-radius: 0;
+    transition: all 0.3s ease 0s;
+}
+.pagination li:last-child a.page-link{ border: none; }
+.pagination li.active a.page-link,
+.pagination li a.page-link:hover,
+.pagination li.active a.page-link:hover{
+    color: #fff;
+    background-color: transparent;
+}
+.pagination li a.page-link:after{
+    content: '';
+    background-color: #dd1200;
+    height: 100%;
+    width: 100%;
+    transform: scaleY(0);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: all 0.3s;
+}
+.pagination li.active a.page-link:after,
+.pagination li a.page-link:hover:after,
+.pagination li.active a.page-link:hover:after{
+    transform: scaleY(1);
+}
+.pagination li:first-child a.page-link:after,
+.pagination li:last-child a.page-link:after{
+    transform: scaleY(1) scaleX(0);
+}
+.pagination li:first-child a.page-link:hover:after,
+.pagination li:last-child a.page-link:hover:after{
+    transform: scaleY(1) scaleX(1);
+}
+@media only screen and (max-width: 480px){
+    .pagination{
+        padding: 5px 0 0;
+        margin: 0;
+        border-radius: 0;
+        display: block;
+    }
+    .pagination li{
+        margin: 0;
+        display: inline-block;
+    }
+}

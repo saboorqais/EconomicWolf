@@ -1,0 +1,48 @@
+.nav-link {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+  
+  }
+  
+  .nav-link:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #000000;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+  
+  .nav-link:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+
+  
+  .navbar2 a {
+    padding: 12px;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 17px;
+    width: 12%; /* Four links of equal widths */
+    text-align: center;
+    font-weight:700;
+  }
+  
+
+
+  
+  @media screen and (max-width: 600px) {
+    .navbar2 a {
+      float: none;
+      display: none;
+      width: 100%;
+      text-align: left;
+    }
+  }
