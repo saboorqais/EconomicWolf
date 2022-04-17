@@ -39,5 +39,5 @@ cd Economic Wolf
 npm install
 ```
 ```shell
-yarn
+npm start
 ```
