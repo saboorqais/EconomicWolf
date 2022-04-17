@@ -81,6 +81,15 @@ function StackedHorizontal(props) {
       "",
     ];
   }
+  function getSource(){
+if (props.name=="Foreign Investment"){
+  return "State Bank of Pakistan"
+}
+else{
+  return "Federal Board of Revenue"
+}
+
+  }
   function percentageError(value1, value2) {
     const data = [];
     data[0] = (value1 - value2).toFixed(3);
@@ -140,6 +149,13 @@ function StackedHorizontal(props) {
    
     props.date(date ? date[date.length - 1] : 0);
     if (props.name == "Tax") {
+      var keys = props.GraphData.payload
+      ? props.GraphData.payload[1]["data"][
+          props.id === 0 ? props.id : props.id - 1
+        ]
+      : {};
+        props.totalbyHand(keys["total_tax"]);
+      
       const total = props.GraphData.payload
         ? props.GraphData.payload[1]["data"][
             props.id === 0 ? props.id : props.id - 1
@@ -171,7 +187,7 @@ function StackedHorizontal(props) {
       ]);
       props.total(indexTotal[indexTotal ? indexTotal.length - 1 : 0]);
     }
-    if (props.name == "Investment") {
+    if (props.name == "Foreign Investment") {
       var keys=props.GraphData.payload
       ? props.GraphData.payload[1]["data"][
           props.id === 0 ? props.id : props.id - 1
@@ -353,19 +369,32 @@ props.totalbyHand(keys[key])
              
               <Bar width={300} height={500} options={options} data={series1} />
             </div>
-            <p 
-          style={{
-            marginRight:"30px"
-          }}
-          class="text-right ">
-          <img
-          style={{
-            width:"20px",
-            height:"20px"
-          }}
-          src={image}
-          />
-          <b>Source: </b>Economic wolf</p>
+            <div class="col-lg-12" style={{ display: "flex",color:"white" }}>
+            <div class="col-lg-8" style={{ display: "inline" }}>
+              <p
+                style={{
+                  marginRight: "30px",
+                  fontWeight: "bold",
+                  display: "inline",
+                }}
+                class="text-left"
+              >
+                thewolf.com.co
+              </p>
+            </div>
+            <div class="col-lg-8" style={{ display: "inline" }}>
+              <p
+                style={{
+                  display: "inline",
+                  right: "0px",
+                  paddingLeft: "0px",
+                }}
+                class="text-right "
+              >
+                <b>Source: </b>{getSource()}
+              </p>
+            </div>
+          </div>
           </Widget>
         </div>
       </div>

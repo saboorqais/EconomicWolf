@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import s from "./Sidebar.module.scss";
 import LinksGroup from "./LinksGroup";
+import Contactus from '../Icons/SidebarIcons/Contactus'
 import {
   changeSidebarVisibility,
   closeSidebar,
@@ -12,11 +13,16 @@ import {
 import { changeActiveSidebarItem } from "../../actions/navigation";
 import HomeIcon from "../Icons/SidebarIcons/HomeIcon";
 import TypographyIcon from "../Icons/SidebarIcons/TypographyIcon";
+import startupicon from '../Icons/SidebarIcons/Startups'
 import TablesIcon from "../Icons/SidebarIcons/TablesIcon";
 import NotificationsIcon from "../Icons/SidebarIcons/NotificationsIcon";
 import ComponentsIcon from "../Icons/SidebarIcons/ComponentsIcon";
 import "./Sidebar.css";
 import { getCatogeries } from "../../actions/Categories";
+import Startupicon from "../Icons/SidebarIcons/Startups";
+import IndicatorIcon from "../Icons/SidebarIcons/indicatorIcon";
+import CPEC from "../Icons/SidebarIcons/CPEC";
+import Avertisement from "../Icons/SidebarIcons/Advertisement";
 
 class Sidebar extends React.Component {
   static propTypes = {
@@ -165,7 +171,7 @@ s.push({
             activeItem={this.props.activeItem}
             header="Startups"
             isHeader
-            iconName={<TablesIcon className={s.menuIcon} />}
+            iconName={<Startupicon className={s.menuIcon} />}
             link="/app/Timeline"
             index="tables"
           />
@@ -179,7 +185,7 @@ s.push({
             activeItem={this.props.activeItem}
             header="Indicators"
             isHeader
-            iconName={<ComponentsIcon className={s.menuIcon} />}
+            iconName={<IndicatorIcon  className={s.menuIcon} />}
             on={()=>{
               this.props.dispatch(closeSidebar())
               this.props.dispatch(changeSidebarVisibility("hide"))
@@ -197,7 +203,7 @@ s.push({
             activeItem={this.props.activeItem}
             header="Economics"
             isHeader
-            iconName={<ComponentsIcon className={s.menuIcon} />}
+            iconName={<TypographyIcon className={s.menuIcon} />}
             on={()=>{
               this.props.dispatch(closeSidebar())
               this.props.dispatch(changeSidebarVisibility("hide"))
@@ -215,7 +221,7 @@ s.push({
             activeItem={this.props.activeItem}
             header="Markets"
             isHeader
-            iconName={<ComponentsIcon className={s.menuIcon} />}
+            iconName={<TypographyIcon className={s.menuIcon} />}
             on={()=>{
               this.props.dispatch(closeSidebar())
               this.props.dispatch(changeSidebarVisibility("hide"))
@@ -233,7 +239,7 @@ s.push({
             activeItem={this.props.activeItem}
             header="CPEC"
             isHeader
-            iconName={<ComponentsIcon className={s.menuIcon} />}
+            iconName={<CPEC className={s.menuIcon}  />}
             on={()=>{
               this.props.dispatch(closeSidebar())
               this.props.dispatch(changeSidebarVisibility("hide"))
@@ -254,7 +260,7 @@ s.push({
             activeItem={this.props.activeItem}
             header="Articles"
             isHeader
-            iconName={<ComponentsIcon className={s.menuIcon} />}
+            iconName={<TypographyIcon className={s.menuIcon} />}
             link="/app/articles"
             index="articles"
             childrenLinks={this.fetchCategories()}
@@ -270,7 +276,7 @@ s.push({
         activeItem={this.props.activeItem}
         header="Advertise"
         isHeader
-        iconName={<NotificationsIcon className={s.menuIcon} />}
+        iconName={<Avertisement className={s.menuIcon} />}
         link="/app/Advertise"
         index="ui"
       />
@@ -285,7 +291,7 @@ s.push({
           activeItem={this.props.activeItem}
           header="Contact Us"
           isHeader
-          iconName={<NotificationsIcon className={s.menuIcon} />}
+          iconName={<Contactus className={s.menuIcon} />}
           link="/app/Contact"
           index="ui"
         />

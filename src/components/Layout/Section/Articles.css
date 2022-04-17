@@ -96,6 +96,24 @@ height: 20%;
 .article .tag-cloud {
   padding-top: 10px;
 }
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+@media screen and (max-width:468px){
+.center{
+  width: 100%;
+}
+.ResponsiveCategory{
+font-size: medium;
+}
+.ResponsiveHeader{
+  font-size: large;
+}
+}
+
 
 .article-comment {
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.125);

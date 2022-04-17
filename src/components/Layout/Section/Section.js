@@ -72,13 +72,13 @@ function Section(props) {
             className="col-lg-5"
             style={{ paddingLeft: "0px", paddingRight: "0px" }}
           >
-            <Charts id="1" title="KSE100" colorLabel={0} />
+            <Charts id={1} title="KSE-100" colorLabel={0} />
           </div>
           <div
             className="col-lg-5"
             style={{ paddingLeft: "0px", paddingRight: "0px" }}
           >
-            <Charts id="2" title="PKR/USD" colorLabel={0} />
+            <Charts id={2} title="PKR/USD" colorLabel={0} />
           </div>
         </div>
       </div>

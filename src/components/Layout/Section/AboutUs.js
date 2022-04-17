@@ -1,5 +1,5 @@
 import React from "react";
-import chart from '../../../Images/Comp 1_2.gif'
+import chart from '../../../Images/Comp 1_3.gif'
 import "./ABoutUs.css";
 export default function AboutUs() {
   return (

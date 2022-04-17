@@ -90,7 +90,8 @@ function Footer() {
             <div className="row">
               <div className="col-md-12 text-center">
                 <p>
-                  Copyright Design Sherif Hamdy © 2019. All rights reserved.
+               <a href="https://edwiz.net/">
+               Developed by: EDWIZ Solutions (PVT) LTD</a> 
                 </p>
               </div>
             </div>

@@ -9,7 +9,7 @@ import "echarts/lib/chart/pie";
 import "echarts/lib/chart/themeRiver";
 import "echarts/lib/component/tooltip";
 import "echarts/lib/component/legend";
-import Highcharts from "highcharts";
+import Highcharts, { color } from "highcharts";
 import config from "./config";
 import image from '../../../Images/image0..png'
 import exporting from "highcharts/modules/exporting";
@@ -27,6 +27,17 @@ function Charts(props) {
     data[1] = (data[0] / value1) * 100;
     return data;
   }
+  function sourceInfo(){
+    if(props.id===1){
+      return "Pakistan Stock Exchange"
+    }
+    else if(props.id===2){
+      return "State Bank of Pakistan"
+    }
+    else if(props.id===3){
+      return "gold.pk"
+    }
+  }
 
   const colors = config.chartColors;
   let lineColors = [colors.blue, colors.green, colors.orange];
@@ -34,129 +45,41 @@ function Charts(props) {
   const [xAxisdata, setxAxisdata] = useState([]);
 
   const [lineOptions, setlineOptions] = useState({
-    color: lineColors,
+    title: {
+      text: props.title
+    },
     tooltip: {
-      trigger: "none",
-      confine: true,
-      axisPointer: {
-        type: "cross",
-      },
-      backgroundColor: "white",
+      trigger: 'axis'
     },
-    axisPointer: {
-      label: {
-        formatter: function (params) {
-          return (
-            props.title +
-            " " +
-            params.value +
-            (params.seriesData.length
-              ? "：" + params.seriesData[0].data
-              : "")
-          );
-        },
-      },
-    },
-    legend: {
-      data: [""],
-      textStyle: {
-        color: colors.textColor,
-      },
-    },
+   
     grid: {
-      top: 70,
-      bottom: 50,
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
     },
-    xAxis: [
-      {
-        type: "category",
-        axisTick: {
-          alignWithLabel: true,
-        },
-        axisLine: {
-          onZero: true,
-          lineStyle: {
-            color: "black",
-          },
-        },
-        axisLabel: {
-          fontSize: 8,
-          color: colorLabel[props.colorLabel],
-          fontWeight: "bolder",
-        },
-        axisPointer: {
-          label: {
-            formatter: function (params) {
-              return (
-                props.title +
-                " " +
-                params.value +
-                (params.seriesData.length
-                  ? "：" + params.seriesData[0].data
-                  : "")
-              );
-            },
-          },
-        },
-        data: [],
-      },
-      {
-        type: "category",
-        show: false,
-        axisLabel: {
-          color: colorLabel[props.colorLabel],
-        },
-        axisLine: {
-          onZero: true,
-          lineStyle: {
-            color: lineColors[2],
-          },
-          axisPointer: {
-            label: {
-              show: false,
-            },
-          },
-        },
-        axisPointer: {
-          label: {
-            show: false,
-          },
-        },
-        data: [],
-      },
-    ],
-    yAxis: [
-      {
-        type: "value",
-        axisLabel: {
-          color: colorLabel[props.colorLabel],
-        },
-        axisLine: {
-          lineStyle: {
-            color: "black",
-          },
-        },
-
-        splitLine: {
-          lineStyle: {
-            color: colors.gridLineColor,
-          },
-        },
-      },
-    ],
+    toolbox: {
+      feature: {
+        saveAsImage: {}
+      }
+    },
+    xAxis: {
+      type: 'category',
+      boundaryGap: false,
+      data: []
+    },
+    yAxis: {
+      type: 'value'
+    },
     series: [
       {
-        name: "s",
-        type: "line",
-        xAxisIndex: 1,
-        smooth: true,
-        emphasis: {
-          focus: "series",
-        },
-        data: [],
+        name: props.title,
+        type: 'line',
+        stack: 'Total',
+        data: []
       },
-      ,
-    ],
+  
+    ]
   });
   const chart = () => {
     var xaxis = [];
@@ -247,117 +170,81 @@ props.date(xaxis[xaxis.length-1])
       Object.assign(
         {},
         {
-          color: lineColors,
+          color:lineColors,
+          title: {
+            text: 'Stacked Line'
+          },
           tooltip: {
-            trigger: "none",
-            axisPointer: {
-              type: "cross",
-            },
-            backgroundColor: "white",
+            trigger: 'axis'
           },
-          legend: {
-            data: [""],
-            textStyle: {
-              color: colors.textColor,
-            },
-          },
+         
           grid: {
-            top: 70,
-            bottom: 50,
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
           },
-          xAxis: [
-            {
-              type: "category",
-              axisTick: {
-                alignWithLabel: true,
-              },
-              axisLine: {
-                onZero: true,
-                lineStyle: {
-                  color: "black",
-                },
-              },
-              axisLabel: {
-                fontSize: 8,
-                color: colorLabel[props.colorLabel],
-                fontWeight: "bolder",
-              },
-              axisPointer: {
-                label: {
-                  formatter: function (params) {
-                    return (
-                      props.title +
-                      " " +
-                      params.value +
-                      (params.seriesData.length
-                        ? "：" + params.seriesData[0].data
-                        : "")
-                    );
-                  },
-                },
-              },
-              data: xAxisdata,
+          toolbox: {
+            feature: {
+              saveAsImage: {}
+            }
+          },
+          xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: xAxisdata,
+            splitLines:{
+              show:false
             },
-            {
-              type: "category",
-              show: false,
-              axisLabel: {
-                color: colorLabel[props.colorLabel],
-              },
-              axisLine: {
-                onZero: true,
-                lineStyle: {
-                  color: lineColors[2],
-                },
-                axisPointer: {
-                  label: {
-                    show: false,
-                  },
-                },
-              },
-              axisPointer: {
-                label: {
-                  show: false,
-                },
-              },
-              data: xAxisdata,
+            axisLabel: {
+              color: colorLabel[props.colorLabel],
             },
-          ],
-          yAxis: [
-            {
-              type: "value",
-              axisLabel: {
-                color: colorLabel[props.colorLabel],
+            splitLine:{
+              show:false
+            },
+            axisLine: {
+              onZero: true,
+              lineStyle: {
+                color: "black",
               },
-              axisLine: {
-                lineStyle: {
-                  color: "black",
-                },
-              },
-              axisLabel: {
-                fontSize: 8,
+            },
+            axisLabel: {
+              fontSize: 8,
+          
+              color: colorLabel[props.colorLabel],
+    
+            },
             
-                color: colorLabel[props.colorLabel],
-      
-              },
-              splitLine: {
-                show: false,
+          },
+          yAxis: {
+            type: 'value',
+            splitLine:{
+              show:false
+            },
+            axisLabel: {
+              color: colorLabel[props.colorLabel],
+            },
+            axisLine: {
+              lineStyle: {
+                color: "black",
               },
             },
-          ],
+            axisLabel: {
+              fontSize: 8,
+          
+              color: colorLabel[props.colorLabel],
+    
+            },
+          },
           series: [
             {
-              name: "s",
-              type: "line",
-              xAxisIndex: 1,
-              smooth: true,
-              emphasis: {
-                focus: "series",
-              },
-              data: yAxisdata,
+              name: props.title,
+              type: 'line',
+              stack: 'Total',
+              data: yAxisdata
             },
-            ,
-          ],
+        
+          ]
         }
       )
     );
@@ -472,19 +359,33 @@ props.date(xaxis[xaxis.length-1])
             opts={initEchartsOptions}
             style={{ height: "300px", width: "100%" ,marginRight:"0px",marginLeft:"0px"}}
           />
-          <p 
-          style={{
-            marginRight:"30px"
-          }}
-          class="text-right ">
-          <img
-          style={{
-            width:"20px",
-            height:"20px"
-          }}
-          src={image}
-          />
-          <b>Source: </b>Economic wolf</p>
+          <div class="col-lg-12" style={{ display: "flex",color:colorLabel[props.colorLabel] }}>
+          <div class="col-lg-6" style={{ display: "inline" }}>
+            <p
+              style={{
+                marginRight: "30px",
+                fontWeight: "bold",
+                display: "inline",
+              }}
+              class="text-left"
+            >
+              thewolf.com.co
+            </p>
+          </div>
+          <div class="col-lg-6" style={{ display: "inline" }}>
+            <p
+              style={{
+                display: "inline",
+                right: "0px",
+                paddingLeft: "0px",
+                color:colorLabel[props.colorLabel]
+              }}
+              class="text-right "
+            >
+              <b>Source: </b>{sourceInfo()}
+            </p>
+          </div>
+        </div> 
         </div>
       </div>
     );

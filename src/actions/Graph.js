@@ -4,43 +4,43 @@ export const GET_GRAPH_DATA = "GET_GRAPH_DATA";
 
 export const getGraphData = (onSuccess) => async (dispatch) => {
   const axiosrequest1 = axios.get(
-    "https://iihsan.com/api/KSE100Api/"
+    "http://wolf.skipems.com/api/KSE100Api/"
   );
   const axiosrequest2 = axios.get(
-    "https://iihsan.com/api/GoldApi/"
+    "http://wolf.skipems.com/api/GoldApi/"
   );
   const axiosrequest3 = axios.get(
-    "https://iihsan.com/api/USDToPKRApi/"
+    "http://wolf.skipems.com/api/USDToPKRApi/"
   );
   const axiosrequest4 = axios.get(
-    "https://iihsan.com/api/ExportsApi/"
+    "http://wolf.skipems.com/api/ExportsApi/"
   );
   const axiosrequest5 = axios.get(
-    "https://iihsan.com/api/ImportsApi/"
+    "http://wolf.skipems.com/api/ImportsApi/"
   );
   const axiosrequest6 = axios.get(
-    "https://iihsan.com/api/RemittancesApi/"
+    "http://wolf.skipems.com/api/RemittancesApi/"
   );
   const axiosrequest7 = axios.get(
-    "https://iihsan.com/api/LSMApi/"
+    "http://wolf.skipems.com/api/LSMApi/"
   );
   const axiosrequest8 = axios.get(
-    "https://iihsan.com/api/TAXApi/"
+    "http://wolf.skipems.com/api/TAXApi/"
   );
   const axiosrequest9 = axios.get(
-    "https://iihsan.com/api/CurrentAccountApi/"
+    "http://wolf.skipems.com/api/CurrentAccountApi/"
   );
   const axiosrequest10 = axios.get(
-    "https://iihsan.com/api/DebtApi/"
+    "http://wolf.skipems.com/api/DebtApi/"
   );
   const axiosrequest11 = axios.get(
-    "https://iihsan.com/api/InflationApi/"
+    "http://wolf.skipems.com/api/InflationApi/"
   );
   const axiosrequest12 = axios.get(
-    "https://iihsan.com/api/FXApi/"
+    "http://wolf.skipems.com/api/FXApi/"
   );
   const axiosrequest13 = axios.get(
-    "https://iihsan.com/api/InvestmentApi/"
+    "http://wolf.skipems.com/api/InvestmentApi/"
   );
   // you could also use destructuring to have an array of responses
   await axios

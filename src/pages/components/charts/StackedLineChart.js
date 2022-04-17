@@ -4,7 +4,7 @@ import Widget from "../../../components/Widget";
 import s from "./Charts.module.scss";
 import ReactEchartsCore from "echarts-for-react/lib/core";
 import { connect } from "react-redux";
-import image from '../../../Images/image0..png'
+import image from "../../../Images/image0..png";
 function StackedLineChart(props) {
   var colorList = [
     "#f42d42",
@@ -16,9 +16,9 @@ function StackedLineChart(props) {
     "#ee9dc2",
     "#ff7bac",
     "#03d2b2",
-    "#66FF66"
+    "#66FF66",
   ];
-  if(props.name==="Exports"){
+  if (props.name === "Exports") {
     colorList = [
       "#f42d42",
       "#8b5cb4",
@@ -29,12 +29,11 @@ function StackedLineChart(props) {
       "#ee9dc2",
       "#ff7bac",
       "#03d2b2",
-      "#66FF66"
+      "#66FF66",
     ];
-    
   }
-  
-  if(props.name==="Remittances"){
+
+  if (props.name === "Remittances") {
     colorList = [
       "#f42d42",
       "#8b5cb4",
@@ -45,9 +44,8 @@ function StackedLineChart(props) {
       "#66FF66",
       "#ff7bac",
       "#03d2b2",
-      "#66FF66"
+      "#66FF66",
     ];
-    
   }
   function percentageError(value1, value2) {
     const data = [];
@@ -83,7 +81,10 @@ function StackedLineChart(props) {
           emphasis: {
             focus: "series",
           },
-          data: value["data"].slice(value["data"].length-range, value["data"].length),
+          data: value["data"].slice(
+            value["data"].length - range,
+            value["data"].length
+          ),
         }))
       : [];
   }
@@ -101,15 +102,13 @@ function StackedLineChart(props) {
               show: false,
               position: "top",
             },
-            areaStyle:{
-              color:colorList[x]
+            areaStyle: {
+              color: colorList[x],
             },
-            LineStyle:{
-              color:colorList[x]
+            LineStyle: {
+              color: colorList[x],
             },
-       
-          
-          
+
             emphasis: {
               focus: "series",
             },
@@ -125,29 +124,28 @@ function StackedLineChart(props) {
     const data = getYaxisList();
     setxaxis(Xaxis);
     setyaxis(Object.assign([], data));
-    const date= props.GraphData.payload
-    ? props.GraphData.payload[1]["data"][
-        props.id === 0 ? props.id : props.id - 1
-      ]['dates']
-    : [];
-  var keys=props.GraphData.payload
-  ? props.GraphData.payload[1]["data"][
-      props.id === 0 ? props.id : props.id - 1
-    ]:{}
-  if(props.name==="Exports"){
-    props.totalbyHand(keys['total_exports'])
-  }
-  if(props.name==="Imports"){
-    props.totalbyHand(keys['total_imports'])
-  }
-  if(props.name==="Remittances"){
-    props.totalbyHand(keys['total_remittance'])
-  }
+    const date = props.GraphData.payload
+      ? props.GraphData.payload[1]["data"][
+          props.id === 0 ? props.id : props.id - 1
+        ]["dates"]
+      : [];
+    var keys = props.GraphData.payload
+      ? props.GraphData.payload[1]["data"][
+          props.id === 0 ? props.id : props.id - 1
+        ]
+      : {};
+    if (props.name === "Exports") {
+      props.totalbyHand(keys["total_exports"]);
+    }
+    if (props.name === "Imports") {
+      props.totalbyHand(keys["total_imports"]);
+    }
+    if (props.name === "Remittances") {
+      props.totalbyHand(keys["total_remittance"]);
+    }
 
-
-   props.date(date?date[date.length-1]:0)
+    props.date(date ? date[date.length - 1] : 0);
     if (props.total) {
-   
       const total = props.GraphData.payload
         ? props.GraphData.payload[1]["data"][
             props.id === 0 ? props.id : props.id - 1
@@ -157,12 +155,20 @@ function StackedLineChart(props) {
         total[total.length - 1],
         total[total.length - 2]
       );
-      props.MonthChange([month[0], month[0] > 0 ? "rgb(146,202,145)" : "rgb(224, 51, 43)", month[1]]);
+      props.MonthChange([
+        month[0],
+        month[0] > 0 ? "rgb(146,202,145)" : "rgb(224, 51, 43)",
+        month[1],
+      ]);
       const year = percentageError(
         total[total.length - 1],
         total[total.length - 13]
       );
-      props.YearChange([year[0], year[0] > 0 ? "rgb(146,202,145)" : "rgb(224, 51, 43)", year[1]]);
+      props.YearChange([
+        year[0],
+        year[0] > 0 ? "rgb(146,202,145)" : "rgb(224, 51, 43)",
+        year[1],
+      ]);
 
       props.total(total[total.length - 1]);
     }
@@ -175,14 +181,14 @@ function StackedLineChart(props) {
     var yaxis = [];
     var xaxis = [];
     yaxis = getSlicedList(slicingNumebr);
-    xaxis = Xaxis.slice(Xaxis.length-slicingNumebr, Xaxis.length-1);
+    xaxis = Xaxis.slice(Xaxis.length - slicingNumebr, Xaxis.length - 1);
 
     setxaxis(xaxis);
     setyaxis(yaxis);
   }
 
   const option = {
-    color:colorList,
+    color: colorList,
     tooltip: {
       trigger: "axis",
       confine: true,
@@ -194,12 +200,12 @@ function StackedLineChart(props) {
       },
     },
     legend: {
-      textStyle:{
-        color:"white"
+      textStyle: {
+        color: "white",
       },
- 
-      itemGap:1,
-      padding:5,
+
+      itemGap: 1,
+      padding: 5,
       data: [
         dataList.map((value) => {
           return value.name;
@@ -233,7 +239,7 @@ function StackedLineChart(props) {
           color: "white",
           fontWeight: "bolder",
         },
-   
+
         data: Object.assign([], xaxis),
       },
     ],
@@ -259,14 +265,13 @@ function StackedLineChart(props) {
         <Widget
           title={
             <h5>
-              <span className="fw-semi-bold">{ props.name} </span>
-             
+              <span className="fw-semi-bold">{props.name} </span>
             </h5>
           }
           option={["sa", "sd"]}
           close
           collapse
-          style={{padding:"0px"}}
+          style={{ padding: "0px" }}
         >
           <div class="d-flex mb-2 text-white text-left">
             <a
@@ -308,19 +313,35 @@ function StackedLineChart(props) {
             opts={initEchartsOptions}
             style={{ height: "300px", width: "100%" }}
           />
-          <p 
-          style={{
-            marginRight:"30px"
-          }}
-          class="text-right ">
-          <img
-          style={{
-            width:"20px",
-            height:"20px"
-          }}
-          src={image}
-          />
-          <b>Source: </b>Economic wolf</p>
+
+          <div>
+            <div class="col-lg-12" style={{ display: "flex" ,color:"white"}}>
+              <div class="col-lg-8" style={{ display: "inline" }}>
+                <p
+                  style={{
+                    marginRight: "30px",
+                    fontWeight: "bold",
+                    display: "inline",
+                  }}
+                  class="text-left"
+                >
+                  thewolf.com.co
+                </p>
+              </div>
+              <div class="col-lg-8" style={{ display: "inline" }}>
+                <p
+                  style={{
+                    display: "inline",
+                    right: "0px",
+                    paddingLeft: "0px",
+                  }}
+                  class="text-right "
+                >
+                  <b>Source: </b>State Bank of Pakistan
+                </p>
+              </div>
+            </div>
+          </div>
         </Widget>
       </div>
     </div>

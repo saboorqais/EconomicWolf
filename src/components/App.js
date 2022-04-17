@@ -13,7 +13,7 @@ class App extends React.PureComponent {
   }
   render() {
     return (
-      <div style={{ backgroundColor: "white" }}>
+      <div style={{ backgroundColor: "white" ,fontFamily:"Neue Haas Grotesk !important"}}>
         <HashRouter>
           <Switch>
           

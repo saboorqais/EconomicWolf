@@ -191,6 +191,14 @@ function Charts(props) {
         })
       : [];
   }
+  function Sourceinfo(){
+    if(props.name=== "Debt"||props.name==="Foreign Investment"||props.name==="Current Account"||props.name==="FX"){
+      return "State Bank of Pakistan"
+    }
+    else if(props.name==="Inflation"|| props.name==="LSM"){
+      return "Pakistan Bureau of Statistics"
+    }
+  }
   function getSlicedList(range) {
     var x = 0;
     return props.GraphData.payload
@@ -558,21 +566,32 @@ function Charts(props) {
               opts={initEchartsOptions}
               style={{ height: "300px", width: "100%" }}
             />
-            <p
-              style={{
-                marginRight: "30px",
-              }}
-              class="text-right "
-            >
-              <img
+            <div class="col-lg-12" style={{ display: "flex" ,color:"white"}}>
+            <div class="col-lg-8" style={{ display: "inline" }}>
+              <p
                 style={{
-                  width: "20px",
-                  height: "20px",
+                  marginRight: "30px",
+                  fontWeight: "bold",
+                  display: "inline",
                 }}
-                src={image}
-              />
-              <b>Source: </b>Economic wolf
-            </p>
+                class="text-left"
+              >
+                thewolf.com.co
+              </p>
+            </div>
+            <div class="col-lg-8" style={{ display: "inline" }}>
+              <p
+                style={{
+                  display: "inline",
+                  right: "0px",
+                  paddingLeft: "0px",
+                }}
+                class="text-right "
+              >
+                <b>Source: </b>{Sourceinfo()}
+              </p>
+            </div>
+          </div>
           </Widget>
           {(() => {
             if (props.name === "Debt") {
